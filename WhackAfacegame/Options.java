@@ -24,7 +24,6 @@ public class Options implements ActionListener {
 
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // Create a new JFrame object to open the new window
@@ -83,6 +82,8 @@ public class Options implements ActionListener {
                 }
             }
         }
+       
+        
 
         //mole color selection
         String[] options = {"Purple", "Yellow", "Brown"};
@@ -158,7 +159,7 @@ public class Options implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disposition();
-                Game g = new Game(newFrame, 60, name, moleColor);
+                Game g = new Game(newFrame, 60, name, moleColor, 3000);
                
             }    
         });
@@ -199,7 +200,7 @@ public class Options implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disposition();
-                Game g = new Game(newFrame, 40, name, moleColor);
+                Game g = new Game(newFrame, 40, name, moleColor, 2000);
 
                
             }    
@@ -239,7 +240,7 @@ public class Options implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disposition();
-                Game g = new Game(newFrame, 30, name, moleColor);
+                Game g = new Game(newFrame, 30, name, moleColor, 1000);
 
             }    
         });
