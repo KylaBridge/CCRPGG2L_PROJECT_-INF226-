@@ -25,6 +25,7 @@ public class Game {
 
     private int score = 0;
     private int timeLeft = 30;
+    private int moleDelay;
     
     private int iniTime;
     private int misses = -1; 
@@ -144,7 +145,7 @@ public class Game {
         });}
 
         //mole timer  
-        moleTimer = new Timer(2000, new ActionListener() {
+        moleTimer = new Timer(moleDelay, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 clearBoard();
                 genRandMole();
@@ -294,13 +295,14 @@ public class Game {
                 cursorAnimTimer.stop();
     }
 
-    public Game(JFrame home, int time, String playerName, String moleColor) {
+    public Game(JFrame home, int time, String playerName, String moleColor, int moleDelay) {
         
         timeLeft = time;
         iniTime = time;
         this.home = home;
         this.playerName = playerName;
         this.moleColor = moleColor;
+        this.moleDelay = moleDelay;
         home.setVisible(true);
         screenwidth = home.getSize().width;
         screenHeight = home.getSize().height;
