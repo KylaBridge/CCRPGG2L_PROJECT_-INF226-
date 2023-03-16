@@ -65,8 +65,6 @@ public class Game {
                 timeLeft = iniTime;
                 lblTimeLeft.setText("Time: " + timeLeft);
                 
-    
-
             } else {
              
                 Home interf = new Home();  
@@ -168,7 +166,6 @@ public class Game {
         int panelPosY = 205;
         panel.setBounds((screenwidth/2)-(panelWidth/2), panelPosY, panelWidth, panelHeight);
         panel.setLayout(null); 
-       
         
         // Create the content pane with the background image
         contentPane = new JLabel(new ImageIcon("C:/Users/kentl/Downloads/WHACKAFACEGAME/WHACKAFACEGAME/res/cyber.gif"));
@@ -178,7 +175,6 @@ public class Game {
         //Add the panel to the content pane
         contentPane.add(panel);
         
-    
         // Create the title label
         JLabel lblTitle = new JLabel("Whack A Face");
         lblTitle.setForeground(Color.YELLOW);
@@ -189,9 +185,6 @@ public class Game {
         int lblTitlePosY = 20;
         lblTitle.setBounds((screenwidth/2)-(lblTitleWidth/2), lblTitlePosY,lblTitleWidth, lblTitleHeight);
         contentPane.add(lblTitle);
-    
-        // Add the panel to the content pane
-        contentPane.add(panel);
     
         // Set the cursor for the panel
         panel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
@@ -211,7 +204,6 @@ public class Game {
                         holes[holeIndex].setBounds(j*holeWidth, i*holeHeight, holeWidth, holeHeight);
                     }
                 }
-        
     
            // Create the start button as an image button 
            ImageIcon startIcon = new ImageIcon("C:/Users/kentl/Downloads/WHACKAFACEGAME/WHACKAFACEGAME/res/gameStartbtn.png");
@@ -222,8 +214,6 @@ public class Game {
            btnStart.setContentAreaFilled(false);
            contentPane.add(btnStart);
 
-
-    
         // Add the score label to the content pane
         lblScore = new JLabel("Score: 0");
         lblScore.setForeground(Color.YELLOW);
