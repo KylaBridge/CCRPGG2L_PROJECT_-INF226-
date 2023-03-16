@@ -48,7 +48,7 @@ public class Game {
 
     private String moleColor;
 
-    private void gameOver(String difficulty){
+    private void gameOver(){
         btnStart.setEnabled(true);
         moleTimer.stop();
         timer.stop();
@@ -76,6 +76,9 @@ public class Game {
 
 
     private void pressedButton(int id){
+        if (!timer.isRunning()) { // disable click events if the timer is not running
+            return;
+        }
         int val = board[id];
         misses--;
         moleTimer.restart();
@@ -84,17 +87,21 @@ public class Game {
         if(val==1){
             score++;
         }else{ //val==0
-            score--;
+            if (score > 0) {
+                score--;
+            }
             misses++;
         }
-
+        score = Math.max(0, score); // don't allow score to go below zero
+        
         lblScore.setText("Score: " + score); //update the score
         clearBoard();
-
-    }
-
+    }    
+    
+    
 
     private void initEvents(){
+
         for(int i = 0; i < holes.length; i++){
             holes[i].addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
@@ -129,9 +136,7 @@ public class Game {
                 if(timeLeft == 0){
                     lblTimeLeft.setText("Time:" + timeLeft);
                     timer.stop();
-                    //timer.restart();
-                    String difficulty = "";
-                    gameOver(difficulty);
+                    gameOver();
                 }
                 lblTimeLeft.setText("Time:" + timeLeft);
                 timeLeft--;
@@ -146,8 +151,7 @@ public class Game {
 
                 misses++;
                 if (misses >= 3) {
-                    String difficulty = "";
-                    gameOver(difficulty);
+                    gameOver();
                     return;
                 }
 
@@ -155,7 +159,6 @@ public class Game {
         });
 
     }
-
 
     private void initGUI(){
 
@@ -191,19 +194,18 @@ public class Game {
                 loadImage("/res/hammer.png").getImage(),
                 new Point(0,0),"custom cursor1"));
 
-                //putting holes on the panel
-                for(int i = 0; i < holes.length; i++){
-                    holes[i] = new JLabel("", SwingConstants.CENTER);
-                    //holes[i] = new JLabel(Integer.toString(i));
-                    holes[i].setName(Integer.toString(i));
-                    panel.add(holes[i]);
+            //putting holes on the panel
+            for(int i = 0; i < holes.length; i++){
+                holes[i] = new JLabel("", SwingConstants.CENTER);
+                holes[i].setName(Integer.toString(i));
+                panel.add(holes[i]);
+            }
+            for(int i = 0; i < Math.sqrt(holes.length); i++){
+                for(int j = 0; j < Math.sqrt(holes.length); j++){
+                    int holeIndex = (int) (i*Math.sqrt(holes.length))+j;
+                    holes[holeIndex].setBounds(j*holeWidth, i*holeHeight, holeWidth, holeHeight);
                 }
-                for(int i = 0; i < Math.sqrt(holes.length); i++){
-                    for(int j = 0; j < Math.sqrt(holes.length); j++){
-                        int holeIndex = (int) (i*Math.sqrt(holes.length))+j;
-                        holes[holeIndex].setBounds(j*holeWidth, i*holeHeight, holeWidth, holeHeight);
-                    }
-                }
+            }
     
            // Create the start button as an image button 
            ImageIcon startIcon = new ImageIcon("C:/Users/kentl/Downloads/WHACKAFACEGAME/WHACKAFACEGAME/res/gameStartbtn.png");
