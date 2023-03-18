@@ -159,7 +159,7 @@ public class Options implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disposition();
-                Game g = new Game(newFrame, 60, name, moleColor, 3000);
+                Game g = new Game(newFrame, 60, name, moleColor, 4000);
                
             }    
         });
@@ -200,7 +200,7 @@ public class Options implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disposition();
-                Game g = new Game(newFrame, 40, name, moleColor, 2000);
+                Game g = new Game(newFrame, 50, name, moleColor, 3000);
 
                
             }    
@@ -240,7 +240,7 @@ public class Options implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disposition();
-                Game g = new Game(newFrame, 30, name, moleColor, 1000);
+                Game g = new Game(newFrame, 40, name, moleColor, 2000);
 
             }    
         });
